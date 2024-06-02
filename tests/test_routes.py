@@ -21,9 +21,11 @@ DATABASE_URI = os.getenv(
 BASE_URL = "/accounts"
 HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 
+
 ######################################################################
 #  T E S T   C A S E S
 ######################################################################
+
 class TestAccountService(TestCase):
     """Account Service Tests"""
 
@@ -168,7 +170,7 @@ class TestAccountService(TestCase):
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         data = resp.get_json()
         self.assertEqual(len(data), 5)
-    
+
     def test_security_headers(self):
         """It should return security headers"""
         response = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
